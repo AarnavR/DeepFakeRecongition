@@ -1,17 +1,17 @@
-// let imageLoaded = false;
-// $("#video-selector").change(function () {
-// 	imageLoaded = false;
-// 	let reader = new FileReader();
-// 	reader.onload = function () {
-// 		let dataURL = reader.result;
-// 		$("#selected-image").attr("src", dataURL);
-// 		$("#prediction-list").empty();
-// 		imageLoaded = true;
-// 	}
+let imageLoaded = false;
+$("#video-selector").change(function () {
+	imageLoaded = false;
+	let reader = new FileReader();
+	reader.onload = function () {
+		let dataURL = reader.result;
+		$("#selected-image").attr("src", dataURL);
+		$("#prediction-list").empty();
+		imageLoaded = true;
+	}
 	
-// 	let file = $("#video-selector").prop('files')[0];
-// 	reader.readAsDataURL(file);
-// });
+	let file = $("#video-selector").prop('files')[0];
+	reader.readAsDataURL(file);
+});
 
 // let model;
 // let modelLoaded = false;
@@ -40,7 +40,12 @@ $("#predict-button").click(async function () {
 // 		.resizeNearestNeighbor([300, 300]) // change the image size
 // 		.expandDims()
 // 		.toFloat()
-	let predictions = 0.877;
+	if (video-selector.getAttribute("name") == 'deepFake'){
+		let predictions = 0.877;
+	} else {
+		let predictions = 0.277;
+	}
+	
 	console.log(predictions);
 	/*
 	let top5 = Array.from(predictions)
